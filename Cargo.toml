@@ -13,6 +13,8 @@ serde-value = { version = "0.5.3", features = ["preserve_order"] }
 structopt = "0.2.14"
 failure = "0.1.5"
 clap = "2.32.0"
+pest = "2.1.0"
+pest_derive = "2.1.0"
 
 [patch.crates-io]
 serde-value = { git = "https://github.com/mitsuhiko/serde-value", rev = "3767089d736480264c7e4fc7a9ca6a1aea65a0e4" }

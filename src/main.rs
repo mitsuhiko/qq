@@ -1,5 +1,5 @@
 mod cli;
-
+mod select;
 
 fn main() {
     if let Err(err) = cli::execute() {

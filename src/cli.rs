@@ -10,6 +10,8 @@ use serde_yaml;
 use structopt::StructOpt;
 use toml;
 
+use crate::select::debug_selector;
+
 arg_enum! {
     #[derive(PartialEq, Debug)]
     pub enum Format {
@@ -39,6 +41,9 @@ pub struct Opts {
         raw(case_insensitive = "true")
     )]
     pub output_format: Option<Format>,
+    /// A selector for filtering.
+    #[structopt(long, short = "s", value_name = "SELECTOR")]
+    pub selector: Option<String>,
     /// The name of the file to open (or stdin)
     #[structopt(value_name = "FILE")]
     pub file: Option<PathBuf>,
@@ -75,5 +80,10 @@ pub fn execute() -> Result<(), Error> {
     let parsed = deserialize(&contents, opts.input_format.unwrap_or(Format::Json))?;
     let output = serialize(&parsed, opts.output_format.unwrap_or(Format::Json))?;
     println!("{}", output);
+
+    if let Some(selector) = opts.selector {
+        debug_selector(&selector)?;
+    }
+
     Ok(())
 }
