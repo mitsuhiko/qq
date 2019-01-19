@@ -1,0 +1,18 @@
+[package]
+name = "qq"
+version = "0.1.0"
+authors = ["Armin Ronacher <armin.ronacher@active-4.com>"]
+edition = "2018"
+
+[dependencies]
+serde = "1.0.85"
+serde_json = { version = "1.0.36", features = ["preserve_order"] }
+serde_yaml = "0.8.8"
+toml = "0.4.10"
+serde-value = { version = "0.5.3", features = ["preserve_order"] }
+structopt = "0.2.14"
+failure = "0.1.5"
+clap = "2.32.0"
+
+[patch.crates-io]
+serde-value = { git = "https://github.com/mitsuhiko/serde-value", rev = "3767089d736480264c7e4fc7a9ca6a1aea65a0e4" }
